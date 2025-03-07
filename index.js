@@ -12,7 +12,16 @@ app.get("/screenshot", async (req, res) => {
   }
 
   try {
-    const browser = await puppeteer.launch({ args: ["--no-sandbox"] })
+    const browser = await puppeteer.launch({
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--headless',
+                '--disable-gpu',
+                '--window-size=1920x1080'
+            ],
+            headless: true,
+        });
     const page = await browser.newPage()
 
     // Set viewport to 1920x1080
