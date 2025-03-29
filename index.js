@@ -45,7 +45,7 @@ app.get('/api/screenshot', async (req, res) => {
     
     // Navigate to URL
     await page.goto(url, { 
-      waitUntil: 'networkidle2',
+      waitUntil: 'domcontentloaded',
       timeout: 30000 // Increased timeout for reliability
     });
     
